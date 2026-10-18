@@ -1,0 +1,40 @@
+# SELinux policy for OnePlus Nord 2T (karen) vendor domain
+# Copyright (C) 2024 The LineageOS Project
+#
+# SPDX-License-Identifier: Apache-2.0
+
+# DT2W
+type dt2w_service, vendor_service;
+type dt2w_service_exec, vendor_file_type, exec_type, file_type;
+
+# Fingerprint
+type fingerprintd_karen, vendor_service;
+type fingerprintd_karen_exec, vendor_file_type, exec_type, file_type;
+
+# OnePlus Parts
+type oneplus_parts_service, vendor_service;
+type oneplus_parts_exec, vendor_file_type, exec_type, file_type;
+
+# Vibrator
+type vendor_qti_hardware_vibrator_service, vendor_service;
+type vendor_qti_hardware_vibrator_service_exec, vendor_file_type, exec_type, file_type;
+
+# Alert slider
+type alert_slider_daemon, vendor_service;
+type alert_slider_daemon_exec, vendor_file_type, exec_type, file_type;
+
+# Pocket mode
+type pocketmode_service, vendor_service;
+type pocketmode_service_exec, vendor_file_type, exec_type, file_type;
+
+# Camera
+type camera_hal_karen, vendor_service;
+type camera_hal_karen_exec, vendor_file_type, exec_type, file_type;
+
+# Init
+type init_oneplus_karen, vendor_service;
+type init_oneplus_karen_exec, vendor_file_type, exec_type, file_type;
+
+# UDFPS
+type udfps_extension_karen, vendor_service;
+type udfps_extension_karen_exec, vendor_file_type, exec_type, file_type;

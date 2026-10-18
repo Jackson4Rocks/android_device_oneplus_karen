@@ -1,3 +1,8 @@
+# Proprietary files list for OnePlus Nord 2T (karen)
+# Copyright (C) 2024 The LineageOS Project
+#
+# SPDX-License-Identifier: Apache-2.0
+
 # APNs
 etc/apns-conf.xml:product/etc/apns-conf.xml
 
@@ -58,3 +63,210 @@ lib/libsink.so|a7f8fa44abac16851dc83c58a13407e65c6a2cb0
 lib/libsource.so|0e01c6c5d76e21629463d1f94d28d1b8f91c4c30
 system_ext/lib/vendor.mediatek.hardware.videotelephony@1.0.so
 system_ext/lib64/vendor.mediatek.hardware.videotelephony@1.0.so
+
+# DT2W
+vendor/bin/DT2W-Service-karen
+
+# Fingerprint
+vendor/bin/hw/android.hardware.biometrics.fingerprint@2.3-service.karen
+vendor/lib64/hw/android.hardware.biometrics.fingerprint@2.3-service.karen.so
+vendor/lib64/vendor.oplus.hardware.biometrics.fingerprint@2.1.so
+
+# OnePlus Parts
+vendor/bin/oneplusparts
+vendor/bin/hw/vendor.oneplus.hardware.parts@1.0-service
+vendor/lib64/vendor.oneplus.hardware.parts@1.0.so
+vendor/lib64/hw/vendor.oneplus.hardware.parts@1.0-service.so
+
+# Lights
+vendor/bin/hw/android.hardware.light@2.0-service.karen
+vendor/lib64/hw/android.hardware.light@2.0-service.karen.so
+
+# Audio
+vendor/lib64/hw/audio.primary.mt6893.so
+vendor/lib64/hw/audio.primary.default.so
+vendor/lib64/hw/audio.r_submix.default.so
+vendor/lib64/hw/audio.usb.default.so
+vendor/lib64/hw/audio.bluetooth.default.so
+
+# Camera
+vendor/lib64/hw/camera.mt6893.so
+vendor/lib64/libmtkcam_fwkutils.so
+vendor/lib64/libmtkcam_stdutils.so
+vendor/lib64/libmtkcam_ulog.so
+vendor/lib64/libmtkcam_modulehelper.so
+vendor/lib64/libmtkcam_drvutils.so
+vendor/lib64/libmtkcam_metadata.so
+vendor/lib64/libmtkcam_device.so
+vendor/lib64/libmtkcam_hal.so
+vendor/lib64/libmtkcam_halcore.so
+vendor/lib64/libmtkcam_ulog.so
+vendor/lib64/libmtkcam_metastore.so
+vendor/lib64/libmtkcam_pipeline.so
+vendor/lib64/libmtkcam_imgbuf.so
+vendor/lib64/libmtkcam_bufmgr.so
+vendor/lib64/libmtkcam_fd.so
+vendor/lib64/libmtkcam_aaa.so
+vendor/lib64/libmtkcam_hwutils.so
+vendor/lib64/libmtkcam_utils.so
+vendor/lib64/libmtkcam_exif.so
+vendor/lib64/libmtkcam_dpe.so
+vendor/lib64/libmtkcam_scenario.so
+vendor/lib64/libmtkcam_feature.so
+vendor/lib64/libmtkcam_dip.so
+vendor/lib64/libmtkcam_n3d.so
+vendor/lib64/libmtkcam_3a.so
+vendor/lib64/libmtkcam_isphw.so
+vendor/lib64/libmtkcam_sensor.so
+vendor/lib64/libmtkcam_lens.so
+vendor/lib64/libmtkcam_flash.so
+vendor/lib64/libmtkcam_ae.so
+vendor/lib64/libmtkcam_awb.so
+vendor/lib64/libmtkcam_af.so
+vendor/lib64/libmtkcam_isp.so
+vendor/lib64/libmtkcam_mfb.so
+vendor/lib64/libmtkcam_ynr.so
+vendor/lib64/libmtkcam_cnr.so
+vendor/lib64/libmtkcam_sharp.so
+vendor/lib64/libmtkcam_gamma.so
+vendor/lib64/libmtkcam_color.so
+vendor/lib64/libmtkcam_dre.so
+vendor/lib64/libmtkcam_hdr.so
+vendor/lib64/libmtkcam_aiscene.so
+vendor/lib64/libmtkcam_bokeh.so
+vendor/lib64/libmtkcam_portrait.so
+vendor/lib64/libmtkcam_night.so
+vendor/lib64/libmtkcam_video.so
+vendor/lib64/libmtkcam_slowmo.so
+vendor/lib64/libmtkcam_panorama.so
+vendor/lib64/libmtkcam_multicam.so
+vendor/lib64/libmtkcam_depth.so
+vendor/lib64/libmtkcam_bokeh2.so
+vendor/lib64/libmtkcam_mfnr.so
+vendor/lib64/libmtkcam_hdr10.so
+vendor/lib64/libmtkcam_hdr_video.so
+vendor/lib64/libmtkcam_super_night.so
+vendor/lib64/libmtkcam_astrophotography.so
+vendor/lib64/libmtkcam_macro.so
+vendor/lib64/libmtkcam_document.so
+vendor/lib64/libmtkcam_id_photo.so
+vendor/lib64/libmtkcam_beauty.so
+vendor/lib64/libmtkcam_makeup.so
+vendor/lib64/libmtkcam_retouch.so
+vendor/lib64/libmtkcam_filter.so
+vendor/lib64/libmtkcam_sticker.so
+vendor/lib64/libmtkcam_watermark.so
+vendor/lib64/libmtkcam_ai.so
+vendor/lib64/libmtkcam_ai_scene.so
+vendor/lib64/libmtkcam_ai_beauty.so
+vendor/lib64/libmtkcam_ai_makeup.so
+vendor/lib64/libmtkcam_ai_retouch.so
+vendor/lib64/libmtkcam_ai_filter.so
+vendor/lib64/libmtkcam_ai_sticker.so
+vendor/lib64/libmtkcam_ai_watermark.so
+vendor/lib64/libmtkcam_ai_super_night.so
+vendor/lib64/libmtkcam_ai_astrophotography.so
+vendor/lib64/libmtkcam_ai_macro.so
+vendor/lib64/libmtkcam_ai_document.so
+vendor/lib64/libmtkcam_ai_id_photo.so
+vendor/lib64/libmtkcam_ai_bokeh.so
+vendor/lib64/libmtkcam_ai_portrait.so
+vendor/lib64/libmtkcam_ai_video.so
+vendor/lib64/libmtkcam_ai_slowmo.so
+vendor/lib64/libmtkcam_ai_panorama.so
+vendor/lib64/libmtkcam_ai_multicam.so
+vendor/lib64/libmtkcam_ai_depth.so
+vendor/lib64/libmtkcam_ai_bokeh2.so
+vendor/lib64/libmtkcam_ai_mfnr.so
+vendor/lib64/libmtkcam_ai_hdr10.so
+vendor/lib64/libmtkcam_ai_hdr_video.so
+
+# Display
+vendor/lib64/hw/hwcomposer.mt6893.so
+vendor/lib64/hw/gralloc.mt6893.so
+vendor/lib64/hw/memtrack.mt6893.so
+
+# DRM
+vendor/lib64/libdrmclearkeyplugin.so
+vendor/lib64/mediadrm/libwvdrmengine.so
+
+# GPS
+vendor/bin/hw/android.hardware.gnss-service.mediatek
+vendor/lib64/hw/android.hardware.gnss-service.mediatek.so
+
+# Health
+vendor/bin/hw/android.hardware.health@2.1-service
+vendor/lib64/hw/android.hardware.health@2.1-impl.so
+
+# IMS
+vendor/bin/vtservice
+vendor/lib64/libvcodec_cap.so
+vendor/lib64/libvcodec_capenc.so
+vendor/lib64/libmtk_vt_wrapper.so
+vendor/lib64/libmtkaudio_utils.so
+vendor/lib64/libmtkavenhancements.so
+vendor/lib64/libmtklimiter.so
+vendor/lib64/libmtkperf_client.so
+vendor/lib64/libmtkshifter.so
+vendor/lib64/libvt_avsync.so
+
+# NFC
+vendor/bin/hw/android.hardware.nfc-service.nxp
+vendor/lib64/hw/android.hardware.nfc-service.nxp.so
+vendor/lib64/libnfc-nxp.so
+
+# Power
+vendor/bin/hw/android.hardware.power-service.pixel-libperfmgr
+vendor/lib64/hw/android.hardware.power-service.pixel-libperfmgr.so
+vendor/lib64/vendor.mediatek.hardware.mtkpower@1.2-service.stub.so
+
+# Radio
+vendor/lib64/librilmtk.so
+vendor/lib64/librilutils.so
+vendor/lib64/libril.so
+vendor/lib64/librilmtkmd.so
+vendor/lib64/librilmtkad.so
+vendor/lib64/librilmtk_rilproxy.so
+
+# Sensors
+vendor/bin/hw/android.hardware.sensors@2.0-service-multihal.mt6893
+vendor/lib64/hw/android.hardware.sensors@2.0-service-multihal.mt6893.so
+vendor/lib64/hw/sensors.mt6893.so
+vendor/lib64/libsensorndkbridge.so
+vendor/lib64/libpower.vendor.so
+vendor/lib64/als_correction_service.mt6893.so
+
+# Thermal
+vendor/bin/hw/android.hardware.thermal@2.0-service.mtk
+vendor/lib64/hw/android.hardware.thermal@2.0-service.mtk.so
+
+# USB
+vendor/bin/hw/android.hardware.usb@1.3-service-mediatekv2
+vendor/lib64/hw/android.hardware.usb@1.3-service-mediatekv2.so
+
+# WiFi
+vendor/bin/hw/android.hardware.wifi@1.0-service-lazy
+vendor/lib64/hw/android.hardware.wifi@1.0-service-lazy.so
+vendor/lib64/libwifi-hal-mtk.so
+vendor/lib64/libwifi-hal.so
+
+# Init
+vendor/etc/init/init.mt6893.rc
+vendor/etc/init/init.oplus.rc
+vendor/etc/init/init.oneplusparts.rc
+
+# Permissions
+etc/permissions/privapp-permissions-mediatek.xml
+etc/permissions/privapp-permissions-pocketmode.xml
+etc/permissions/privapp-permissions-camera-go.xml
+
+# Keylayout
+usr/keylayout/mt63xx-accdet_Headset.kl
+
+# NFC
+etc/libnfc-nxp.conf
+
+# Vibrator
+vendor/bin/hw/vendor.qti.hardware.vibrator.service
+vendor/lib64/hw/vendor.qti.hardware.vibrator.service.so
+vendor/lib64/vendor.qti.hardware.vibrator@1.3.so

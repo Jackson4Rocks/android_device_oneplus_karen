@@ -14,7 +14,7 @@ static const variant_info_t global_info = {
 
     .model = "CPH2399",
     .name = "CPH2399EEA",
-    .build_fingerprint = "OnePlus/CPH2399EEA/OP557AL1:11/RP1A.200720.011/1629889893415:user/release-keys",
+    .build_fingerprint = "OnePlus/CPH2399EEA/OP557AL1:16/BP1A.250404.001/1234567890:user/release-keys",
     .hw = "20831",
 };
 
@@ -23,7 +23,7 @@ static const variant_info_t india_info = {
 
     .model = "CPH2401",
     .name = "CPH2401IND",
-    .build_fingerprint = "OnePlus/CPH2401IND/OP557AL1:11/RP1A.200720.011/1627567766349:user/release-keys",
+    .build_fingerprint = "OnePlus/CPH2401IND/OP557AL1:16/BP1A.250404.001/1234567890:user/release-keys",
     .hw = "20827",
 };
 

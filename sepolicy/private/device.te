@@ -1,2 +1,47 @@
+# SELinux policy for OnePlus Nord 2T (karen) private domain
+# Copyright (C) 2024 The LineageOS Project
+#
+# SPDX-License-Identifier: Apache-2.0
+
 # MTD
 type mtd_device, dev_type;
+
+# Allow vendor_init to execute init_oneplus_karen
+allow init init_oneplus_karen_exec:file { execute execute_no_trans read getattr open };
+
+# Allow vendor_init to transition to init_oneplus_karen
+allow init init_oneplus_karen:process transition;
+allow init_oneplus_karen init:process { signal sigchld };
+allow init_oneplus_karen self:capability { sys_admin sys_resource };
+
+# DT2W
+allow dt2w_service dt2w_service_exec:file { execute execute_no_trans read getattr open };
+allow dt2w_service self:capability { sys_admin sys_resource };
+allow dt2w_service sysfs_touchpanel:dir { read write search };
+allow dt2w_service sysfs_touchpanel:file { read write open };
+
+# Fingerprint
+allow fingerprintd_karen fingerprintd_karen_exec:file { execute execute_no_trans read getattr open };
+allow fingerprintd_karen self:capability { sys_admin sys_resource };
+allow fingerprintd_karen sysfs_fingerprint:dir { read write search };
+allow fingerprintd_karen sysfs_fingerprint:file { read write open };
+
+# OnePlus Parts
+allow oneplus_parts_service oneplus_parts_exec:file { execute execute_no_trans read getattr open };
+allow oneplus_parts_service self:capability { sys_admin sys_resource };
+
+# Vibrator
+allow vendor_qti_hardware_vibrator_service vendor_qti_hardware_vibrator_service_exec:file { execute execute_no_trans read getattr open };
+allow vendor_qti_hardware_vibrator_service self:capability { sys_admin sys_resource };
+
+# Alert slider
+allow alert_slider_daemon alert_slider_daemon_exec:file { execute execute_no_trans read getattr open };
+allow alert_slider_daemon self:capability { sys_admin sys_resource };
+
+# Pocket mode
+allow pocketmode_service pocketmode_service_exec:file { execute execute_no_trans read getattr open };
+allow pocketmode_service self:capability { sys_admin sys_resource };
+
+# UDFPS
+allow udfps_extension_karen udfps_extension_karen_exec:file { execute execute_no_trans read getattr open };
+allow udfps_extension_karen self:capability { sys_admin sys_resource };

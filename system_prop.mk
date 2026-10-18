@@ -90,3 +90,25 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.crypto.volume.filenames_mode=aes-256-cts \
     ro.crypto.volume.metadata.method=dm-default-key \
     ro.crypto.volume.options=::v2
+
+# Audio
+PRODUCT_SYSTEM_PROPERTIES += \
+    audio.avs.afe_api_version=2 \
+    audio.offload.buffer.size.kb=32 \
+    audio.offload.gapless.enabled=true \
+    audio.offload.min.duration.secs=30 \
+    audio.offload.video=true \
+    audio.offload.multiaac.enable=true \
+    ro.audio.monitorRotation=true
+
+# Display
+PRODUCT_SYSTEM_PROPERTIES += \
+    debug.sf.disable_hwc=0 \
+    ro.surface_flinger.use_color_management=true \
+    ro.surface_flinger.has_wide_color_display=true \
+    ro.surface_flinger.has_HDR_display=true \
+    ro.surface_flinger.max_virtual_display_dimension=4096
+
+# Perf
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.vendor.extension_library=libmtkperf.so

@@ -26,16 +26,15 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 TARGET_FLATTEN_APEX := true
 
 # VNDK
-PRODUCT_EXTRA_VNDK_VERSIONS := 31
-PRODUCT_SHIPPING_API_LEVEL := 31
+PRODUCT_EXTRA_VNDK_VERSIONS := 33
+PRODUCT_SHIPPING_API_LEVEL := 33
 
 # Call proprietary blob setup
 $(call inherit-product-if-exists, vendor/oneplus/karen/karen-vendor.mk)
 $(call inherit-product-if-exists, vendor/mediatek/ims/mtk-ims.mk)
 
 # OneplusParts
-# TODO:
-# $(call inherit-product, packages/apps/OneplusParts/parts.mk)
+$(call inherit-product-if-exists, packages/apps/OneplusParts/parts.mk)
 
 # Dynamic Partition
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
@@ -194,3 +193,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     TetheringConfigOverlay \
     WifiOverlay
+
+# Inherit from mt6893-common
+$(call inherit-product, device/oplus/mt6893-common/common.mk)

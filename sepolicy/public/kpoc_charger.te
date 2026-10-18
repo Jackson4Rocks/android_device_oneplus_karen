@@ -1,1 +1,23 @@
+# SELinux policy for OnePlus Nord 2T (karen) public domain
+# Copyright (C) 2024 The LineageOS Project
+#
+# SPDX-License-Identifier: Apache-2.0
+
+# Public types
+type sysfs_touchpanel, fs_type, sysfs_type;
+type sysfs_fingerprint, fs_type, sysfs_type;
+type sysfs_udfps, fs_type, sysfs_type;
+
+# Allow platform apps to access touchpanel sysfs
+allow appdomain sysfs_touchpanel:dir { read search };
+allow appdomain sysfs_touchpanel:file { read write open };
+
+# Allow platform apps to access fingerprint sysfs
+allow appdomain sysfs_fingerprint:dir { read search };
+allow appdomain sysfs_fingerprint:file { read write open };
+
+# Allow platform apps to access udfps sysfs
+allow appdomain sysfs_udfps:dir { read search };
+allow appdomain sysfs_udfps:file { read write open };
+
 type kpoc_charger, domain;
