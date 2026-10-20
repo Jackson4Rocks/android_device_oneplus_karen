@@ -1,6 +1,6 @@
 # OnePlus Nord 2T 5G (karen) Device Tree
 
-Device tree for the OnePlus Nord 2T 5G (codename: `karen`) targeting LineageOS 23.2 (Android 14) with forward compatibility for Android 15/16.
+Device tree for the OnePlus Nord 2T 5G (codename: `karen`) targeting LineageOS 23.2 (Android 16) with forward compatibility for Android 15/16.
 
 ## Device Specifications
 
@@ -35,14 +35,16 @@ Add the following to `.repo/local_manifests/karen.xml`:
   <project path="device/oneplus/karen" name="Jackson4Rocks/android_device_oneplus_karen" remote="github" revision="lineage-23.2" />
 
   <!-- Common Device Tree (mt6893) -->
-  <project path="device/oplus/mt6893-common" name="mt6893-development/android_device_oplus_mt6893-common" remote="github" revision="lineage-23.2" />
+  <!-- NOTE: No lineage-23.2 branch exists yet; using lineage-22.2 as fallback -->
+  <project path="device/oplus/mt6893-common" name="mt6893-development/android_device_oplus_mt6893-common" remote="github" revision="lineage-22.2" />
 
   <!-- Kernel -->
   <project path="kernel/oneplus/karen" name="mt6893-development/android_kernel_oplus_mt6893" remote="github" revision="lineage-23.2" />
   <project path="kernel/oplus/mt6893" name="mt6893-development/android_kernel_oplus_mt6893" remote="github" revision="lineage-23.2" />
 
   <!-- Vendor Blobs -->
-  <project path="vendor/oplus/mt6893-common" name="mt6893-development/proprietary_vendor_oplus_mt6893-common" remote="github" revision="lineage-23.2" />
+  <!-- NOTE: No lineage-23.2 branch exists yet for common vendor; using lineage-22.2 as fallback -->
+  <project path="vendor/oplus/mt6893-common" name="mt6893-development/proprietary_vendor_oplus_mt6893-common" remote="github" revision="lineage-22.2" />
   <project path="vendor/oplus/op6893" name="mt6893-development/proprietary_vendor_oplus_op6893" remote="github" revision="lineage-23.2" />
 
   <!-- Hardware HALs -->
@@ -56,17 +58,19 @@ Add the following to `.repo/local_manifests/karen.xml`:
 
 ### Repository Index
 
-| Repository | Path | Branch |
-|------------|------|--------|
-| Jackson4Rocks/android_device_oneplus_karen | `device/oneplus/karen` | lineage-23.2 |
-| mt6893-development/android_device_oplus_mt6893-common | `device/oplus/mt6893-common` | lineage-23.2 |
-| mt6893-development/android_kernel_oplus_mt6893 | `kernel/oneplus/karen` | lineage-23.2 |
-| mt6893-development/android_kernel_oplus_mt6893 | `kernel/oplus/mt6893` | lineage-23.2 |
-| mt6893-development/proprietary_vendor_oplus_mt6893-common | `vendor/oplus/mt6893-common` | lineage-23.2 |
-| mt6893-development/proprietary_vendor_oplus_op6893 | `vendor/oplus/op6893` | lineage-23.2 |
-| LineageOS/android_hardware_mediatek | `hardware/mediatek` | lineage-23.2 |
-| LineageOS/android_hardware_oplus | `hardware/oplus` | lineage-23.2 |
-| LineageOS/android_device_mediatek_sepolicy_vndr | `device/mediatek/sepolicy_vndr` | lineage-23.2 |
+| Repository | Path | Branch | Status |
+|------------|------|--------|--------|
+| Jackson4Rocks/android_device_oneplus_karen | `device/oneplus/karen` | lineage-23.2 | ✅ Available |
+| mt6893-development/android_device_oplus_mt6893-common | `device/oplus/mt6893-common` | lineage-22.2 | ⚠️ No 23.2 branch |
+| mt6893-development/android_kernel_oplus_mt6893 | `kernel/oneplus/karen` | lineage-23.2 | ✅ Available |
+| mt6893-development/android_kernel_oplus_mt6893 | `kernel/oplus/mt6893` | lineage-23.2 | ✅ Available |
+| mt6893-development/proprietary_vendor_oplus_mt6893-common | `vendor/oplus/mt6893-common` | lineage-22.2 | ⚠️ No 23.2 branch |
+| mt6893-development/proprietary_vendor_oplus_op6893 | `vendor/oplus/op6893` | lineage-23.2 | ✅ Available |
+| LineageOS/android_hardware_mediatek | `hardware/mediatek` | lineage-23.2 | ✅ Available |
+| LineageOS/android_hardware_oplus | `hardware/oplus` | lineage-23.2 | ✅ Available |
+| LineageOS/android_device_mediatek_sepolicy_vndr | `device/mediatek/sepolicy_vndr` | lineage-23.2 | ✅ Available |
+
+> **⚠️ Important:** The common device tree (`mt6893-common`) and common vendor blobs (`proprietary_vendor_oplus_mt6893-common`) do not yet have `lineage-23.2` branches. The manifest uses `lineage-22.2` as a fallback. This may cause build failures or runtime issues. Consider waiting for upstream to create `lineage-23.2` branches or testing compatibility manually.
 
 ## Building Instructions
 
@@ -74,10 +78,39 @@ Add the following to `.repo/local_manifests/karen.xml`:
 
 - Ubuntu 22.04+ or equivalent Linux distribution
 - Minimum 16 GB RAM (32 GB recommended)
-- 200+ GB free disk space
+- 300+ GB free disk space (source + build output + ccache)
 - `repo` tool installed and in PATH
 
-### Initialize Source
+### GitHub Actions Build (Recommended)
+
+A GitHub Actions workflow is provided at `.github/workflows/build-karen.yml`. It requires a **self-hosted Linux runner** with the following labels:
+- `self-hosted`
+- `linux`
+- `x64`
+- `lineageos-build`
+
+The standard GitHub-hosted `ubuntu-latest` runner provides only 4 CPUs, 16 GB RAM, and ~14 GB SSD storage — insufficient for a full LineageOS build (needs ~32 GB RAM, ~300 GB storage).
+
+#### Self-hosted runner requirements:
+- **CPU**: 8+ cores (16+ recommended)
+- **RAM**: 32 GB minimum (64 GB recommended)
+- **Storage**: 500 GB+ NVMe SSD (for source, out/, ccache)
+- **OS**: Ubuntu 22.04 LTS or newer
+- **Network**: Stable internet for repo sync
+
+To register a runner:
+```bash
+# On your build machine
+mkdir actions-runner && cd actions-runner
+curl -o actions-runner-linux-x64-2.316.1.tar.gz -L https://github.com/actions/runner/releases/download/v2.316.1/actions-runner-linux-x64-2.316.1.tar.gz
+tar xzf actions-runner-linux-x64-2.316.1.tar.gz
+./config.sh --url https://github.com/<YOUR_USER>/<YOUR_REPO> --labels self-hosted,linux,x64,lineageos-build
+./run.sh
+```
+
+Then trigger builds from **GitHub → Actions → Build LineageOS 23.2 for karen → Run workflow**.
+
+### Local Build
 
 ```bash
 # Initialize LineageOS 23.2 (Android 16)
