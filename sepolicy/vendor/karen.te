@@ -23,10 +23,6 @@ type vendor_qti_hardware_vibrator_service_exec, vendor_file_type, exec_type, fil
 type alert_slider_daemon, vendor_service;
 type alert_slider_daemon_exec, vendor_file_type, exec_type, file_type;
 
-# Pocket mode
-type pocketmode_service, vendor_service;
-type pocketmode_service_exec, vendor_file_type, exec_type, file_type;
-
 # Camera
 type camera_hal_karen, vendor_service;
 type camera_hal_karen_exec, vendor_file_type, exec_type, file_type;

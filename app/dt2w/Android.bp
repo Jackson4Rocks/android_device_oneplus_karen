@@ -24,6 +24,8 @@ android_app {
     certificate: "platform",
     platform_apis: true,
     privileged: true,
+    min_sdk_version: "24",
+    target_sdk_version: "36",
 
     optimize: {
         enabled: false,

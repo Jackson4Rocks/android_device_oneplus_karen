@@ -18,7 +18,7 @@ odm                                              /odm                  ext4    r
 /dev/block/by-name/boot                          /boot                 emmc    defaults                                                    first_stage_mount,nofail
 /dev/block/by-name/persist                       /mnt/vendor/persist   ext4    noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc    wait,check,formattable
 /dev/block/by-name/vbmeta                        /vbmeta               emmc    defaults                                                    defaults
-/dev/block/by-name/vbmeta_system                 /vbmeta_system        emmc    defaults                                                    first_stage_mount,nofail,,avb=vbmeta
+/dev/block/by-name/vbmeta_system                 /vbmeta_system        emmc    defaults                                                    first_stage_mount,nofail,avb=vbmeta
 
 # Non-Volatile (RAM | DATA | CFG)
 /dev/block/by-name/nvdata                        /mnt/vendor/nvdata    ext4    noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc    wait,check,formattable

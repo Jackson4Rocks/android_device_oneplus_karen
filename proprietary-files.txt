@@ -64,9 +64,6 @@ lib/libsource.so|0e01c6c5d76e21629463d1f94d28d1b8f91c4c30
 system_ext/lib/vendor.mediatek.hardware.videotelephony@1.0.so
 system_ext/lib64/vendor.mediatek.hardware.videotelephony@1.0.so
 
-# DT2W
-vendor/bin/DT2W-Service-karen
-
 # Fingerprint
 vendor/bin/hw/android.hardware.biometrics.fingerprint@2.3-service.karen
 vendor/lib64/hw/android.hardware.biometrics.fingerprint@2.3-service.karen.so

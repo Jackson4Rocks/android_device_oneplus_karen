@@ -26,7 +26,7 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 TARGET_FLATTEN_APEX := true
 
 # VNDK
-PRODUCT_EXTRA_VNDK_VERSIONS := 33
+PRODUCT_EXTRA_VNDK_VERSIONS := 33 34 35 36
 PRODUCT_SHIPPING_API_LEVEL := 33
 
 # Call proprietary blob setup
@@ -123,7 +123,7 @@ PRODUCT_PACKAGES += \
     PocketMode
 
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/permissions/privapp-permissions-pocketmode.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-pocketmode.xml
+    $(DEVICE_PATH)/configs/permissions/privapp-permissions-pocketmode.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-pocketmode.xml
 
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
@@ -150,7 +150,7 @@ PRODUCT_PACKAGES += \
 
 # Permissions
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/permissions/privapp-permissions-mediatek.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-mediatek.xml
+    $(DEVICE_PATH)/configs/permissions/privapp-permissions-mediatek.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-mediatek.xml
 
 # RcsService
 PRODUCT_PACKAGES += \
@@ -172,7 +172,7 @@ PRODUCT_PACKAGES += \
 
 # Vendor overlay
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(DEVICE_PATH)/vendor_overlay/,$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/30/)
+    $(call find-copy-subdir-files,*,$(DEVICE_PATH)/vendor_overlay/,$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/33/)
 
 # Symbols
 PRODUCT_PACKAGES += \

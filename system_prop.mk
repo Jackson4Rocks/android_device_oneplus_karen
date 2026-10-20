@@ -112,3 +112,12 @@ PRODUCT_SYSTEM_PROPERTIES += \
 # Perf
 PRODUCT_SYSTEM_PROPERTIES += \
     ro.vendor.extension_library=libmtkperf.so
+
+# ART - Enable profile guided compilation for faster app startup
+PRODUCT_PRODUCT_PROPERTIES += \
+    dalvik.vm.usejit=true \
+    dalvik.vm.usejitprofiles=true
+
+# Mainline modules - Enable for future Android versions
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.module.use_mltrue=true

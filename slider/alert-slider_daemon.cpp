@@ -23,48 +23,80 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <android-base/logging.h>
+
+#define AUDIO_SERVICE_SET_STREAM_VOLUME 33
 
 int read_tristate() {
     int fd = open("/proc/tristatekey/tri_state", O_RDONLY);
+    if (fd < 0) {
+        LOG(ERROR) << "Failed to open tristate node";
+        return -1;
+    }
     char p[16];
     int ret = read(fd, p, sizeof(p) - 1);
+    close(fd);
+    if (ret <= 0) {
+        LOG(ERROR) << "Failed to read tristate node";
+        return -1;
+    }
     p[ret] = 0;
     return atoi(p);
+}
+
+int set_audio_mode(int mode) {
+    char cmd[128];
+    snprintf(cmd, sizeof(cmd), "service call audio %d i32 %d s16 android", AUDIO_SERVICE_SET_STREAM_VOLUME, mode);
+    int ret = system(cmd);
+    if (ret != 0) {
+        LOG(ERROR) << "Failed to set audio mode: " << mode;
+    }
+    return ret;
 }
 
 int main() {
     int fd = -1;
     for (int i = 0; i < 255; i++) {
         char path[256];
-        snprintf(path, 256, "/dev/input/event%d", i);
+        snprintf(path, sizeof(path), "/dev/input/event%d", i);
         fd = open(path, O_RDWR);
         if (fd == -1) continue;
         char name[256];
-        ioctl(fd, EVIOCGNAME(256), name);
-        printf("Got input name %s\n", name);
+        ioctl(fd, EVIOCGNAME(sizeof(name)), name);
+        LOG(INFO) << "Got input name: " << name;
         if (strcmp(name, "oplus,hall_tri_state_key") == 0) {
             break;
         }
         close(fd);
         fd = -1;
     }
-    if (fd == -1) return 0;
+    if (fd == -1) {
+        LOG(ERROR) << "Failed to find alert slider input device";
+        return 1;
+    }
 
-    ioctl(fd, EVIOCGRAB, 1);
+    if (ioctl(fd, EVIOCGRAB, 1) < 0) {
+        LOG(ERROR) << "Failed to grab input device";
+        close(fd);
+        return 1;
+    }
 
     struct input_event ev;
-    while (read(fd, &ev, sizeof(ev)) != 0) {
+    while (read(fd, &ev, sizeof(ev)) == sizeof(ev)) {
         if (!(ev.code == 61 && ev.value == 0)) continue;
         int state = read_tristate();
+        if (state < 0) continue;
+        LOG(INFO) << "Alert slider state: " << state;
         if (state == 1) {
-        }
-        printf("State %d\n", read_tristate());
-        if (state == 1) {
-            system("service call audio 33 i32 0 s16 android");
+            set_audio_mode(0);
         } else if (state == 2) {
-            system("service call audio 33 i32 1 s16 android");
+            set_audio_mode(1);
         } else if (state == 3) {
-            system("service call audio 33 i32 2 s16 android");
+            set_audio_mode(2);
         }
     }
+
+    LOG(ERROR) << "Input device read failed";
+    close(fd);
+    return 1;
 }

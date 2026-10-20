@@ -38,10 +38,6 @@ allow vendor_qti_hardware_vibrator_service self:capability { sys_admin sys_resou
 allow alert_slider_daemon alert_slider_daemon_exec:file { execute execute_no_trans read getattr open };
 allow alert_slider_daemon self:capability { sys_admin sys_resource };
 
-# Pocket mode
-allow pocketmode_service pocketmode_service_exec:file { execute execute_no_trans read getattr open };
-allow pocketmode_service self:capability { sys_admin sys_resource };
-
 # UDFPS
 allow udfps_extension_karen udfps_extension_karen_exec:file { execute execute_no_trans read getattr open };
 allow udfps_extension_karen self:capability { sys_admin sys_resource };

@@ -1,0 +1,9 @@
+type pocketmode_service, domain, coredomain;
+type pocketmode_service_exec, system_file_type, exec_type, file_type;
+
+init_daemon_domain(pocketmode_service)
+
+allow pocketmode_service proximity_sensor:chr_file rw_file_perms;
+allow pocketmode_service self:capability { sys_admin sys_resource };
+allow pocketmode_service power_service:service_manager { find };
+allow pocketmode_service system_server:service_manager { find };

@@ -19,5 +19,3 @@ allow appdomain sysfs_fingerprint:file { read write open };
 # Allow platform apps to access udfps sysfs
 allow appdomain sysfs_udfps:dir { read search };
 allow appdomain sysfs_udfps:file { read write open };
-
-type kpoc_charger, domain;

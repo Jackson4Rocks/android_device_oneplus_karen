@@ -72,7 +72,7 @@ public class PocketService extends Service {
         screenStateFilter.addAction(Intent.ACTION_SCREEN_ON);
         screenStateFilter.addAction(Intent.ACTION_SCREEN_OFF);
         screenStateFilter.addAction(Intent.ACTION_USER_PRESENT);
-        registerReceiver(mScreenStateReceiver, screenStateFilter);
+        registerReceiver(mScreenStateReceiver, screenStateFilter, Context.RECEIVER_EXPORTED);
     }
 
     @Override

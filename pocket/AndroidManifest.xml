@@ -26,7 +26,6 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.github.maytinhdibo.pocket"
-    android:sharedUserId="android.uid.system"
     android:versionCode="1"
     android:versionName="1.0">
 
@@ -34,27 +33,27 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
-    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <protected-broadcast android:name="com.android.systemui.doze.pulse" />
 
     <uses-sdk
         android:minSdkVersion="24"
-        android:targetSdkVersion="24" />
+        android:targetSdkVersion="36" />
 
     <application
-        android:label="@string/pocketmode_short_title"
-        android:persistent="true">
+        android:label="@string/pocketmode_short_title">
 
-        <receiver android:name=".receiver.BootCompletedReceiver">
+        <receiver android:name=".receiver.BootCompletedReceiver"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".receiver.PhoneStateReceiver">
+        <receiver android:name=".receiver.PhoneStateReceiver"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.PHONE_STATE" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -63,13 +62,15 @@
 
         <service
             android:name=".PocketService"
-            android:permission="PocketService"></service>
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="false"/>
 
         <!-- use theme as setting remove android:theme if not need it -->
         <activity
             android:name=".PocketPreferenceActivity"
             android:label="@string/pocketmode_short_title"
-            android:theme="@style/Theme.SubSettingsBase">
+            android:theme="@style/Theme.SubSettingsBase"
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.android.settings.action.IA_SETTINGS" />
             </intent-filter>
