@@ -1,4 +1,4 @@
-name: Build LineageOS 23.2 for karen (OnePlus Nord 2T)
+name: Build LineageOS 23.2 A16 for karen (OnePlus Nord 2T)
 
 on:
   workflow_dispatch:
