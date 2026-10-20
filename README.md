@@ -80,7 +80,7 @@ Add the following to `.repo/local_manifests/karen.xml`:
 ### Initialize Source
 
 ```bash
-# Initialize LineageOS 23.2 (Android 14)
+# Initialize LineageOS 23.2 (Android 16)
 repo init -u https://github.com/LineageOS/android.git -b lineage-23.2 --git-lfs
 
 # Sync sources (adjust -j for your CPU cores)
